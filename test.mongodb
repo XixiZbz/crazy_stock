@@ -1,0 +1,9 @@
+// MongoDB Playground
+// Use Ctrl+Space inside a snippet or a string literal to trigger completions.
+
+// The current database to use.
+use('stock');
+
+// Search for documents in the current collection.
+a = db.getCollection('history').find({"日期":"2022-07-26"}).count
+

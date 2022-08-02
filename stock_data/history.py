@@ -5,7 +5,7 @@ import pymongo
 
 myclient = pymongo.MongoClient('localhost', 27017)
 collection_daily = myclient.stock.daily
-is_not_inits = collection_daily.find({'init':0})
+is_not_inits = collection_daily.find()
 collection_history  = myclient.stock.history
 column = [("代码",-1),("名称",-1),("日期",-1)]
 collection_history.create_index(column,unique=True,name='唯一键')
@@ -27,4 +27,3 @@ for is_not_init in is_not_inits:
     except Exception as why:
         print(why)
         continue
-    collection_daily.update_one({"代码":code},{"$set":{"init":1}},upsert=True)
